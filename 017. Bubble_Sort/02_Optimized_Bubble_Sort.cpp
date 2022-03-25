@@ -2,14 +2,16 @@
 // https://www.programiz.com/dsa/bubble-sort
 
 /*
-Bubble  sort works on the principle of comparing adjacent elements
-and then interchanging them if they are not sorted 
+for optimizing :
+we take a varibale swapped=false and if,
+in any round of i loop nothing is swapped means varibale remains false
+then the array becomes sorted
+and then we do not need to proceed for further rounds
 */
-
 
 /*
 Time Complexity :
-Best case : O(n^2)
+Best case : O(n)
 Worst case : O(n^2)
 
 Space Complexity : O(1)
@@ -48,6 +50,7 @@ void bubbleSort(int ar[], int size)
 {
     for (int i = 0; i < size; i++)
     {
+        bool swapped = false;
         for (int j = 0; j < size - 1 - i; j++)
         {
             // if just next element is less than
@@ -57,8 +60,14 @@ void bubbleSort(int ar[], int size)
             // this is for ascending order
             // and for descending order reverse the inequaltiy
             if (ar[j + 1] < ar[j])
+            {
                 swap(ar[j + 1], ar[j]);
+                swapped = true;
+            }
         }
+        // already sorted hence no need to proceed further
+        if (swapped == false)
+            break;
     }
 }
 
