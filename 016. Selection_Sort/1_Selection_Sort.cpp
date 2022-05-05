@@ -7,6 +7,15 @@ pick the smallest element from the array and place it in its correct sorted inde
 repeat the above procedure for each index
 */
 
+/*
+Time Complexity :
+Best case : O(n^2)
+Worst case : O(n^2)
+
+Space Complexity : O(1)
+*/
+
+
 #include <iostream>
 using namespace std;
 

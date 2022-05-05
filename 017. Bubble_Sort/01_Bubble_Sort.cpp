@@ -36,7 +36,7 @@ int main()
     // display the sorted array
     display(arr, 10);
 
-    return 0;
+    // return 0;
 }
 
 // this function is to sort in ascending order
