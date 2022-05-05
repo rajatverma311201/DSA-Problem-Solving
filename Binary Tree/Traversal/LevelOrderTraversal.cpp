@@ -17,7 +17,7 @@ public:
     }
 };
 
-vector<vector<int>> zigzagLevelOrder(Tree *root)
+vector<vector<int>> LevelOrder(Tree *root)
 {
     vector<vector<int>> traverse;
 
@@ -30,31 +30,20 @@ vector<vector<int>> zigzagLevelOrder(Tree *root)
     // the elements of a level in it
     queue<Tree *> Q;
     Q.push(root);
-
-    // flag variable indicates the order in which
-    // we have to fill the list of that level
-    // i.e. from left to right or from right to left
-    bool flag = true;
     while (!Q.empty())
     {
         int n = Q.size();
         vector<int> li(n);
         Tree *node;
-
-        // we run a loop for all the elements of a level
+        
+        // we run a loopfor all the elements of a level
         // means all the elements present in the queue
         for (int i = 0; i < n; i++)
         {
             node = Q.front();
             Q.pop();
 
-            // if true then fill the elements from left to right
-            if (flag == true)
-                li[i] = node->data;
-
-            // if false then fill the elements from right to left
-            else
-                li[n - i - 1] = node->data;
+            li[i] = node->data;
 
             // push the child elements of the nodes
             // means the elements at a lower level
@@ -67,8 +56,6 @@ vector<vector<int>> zigzagLevelOrder(Tree *root)
                 Q.push(node->right);
             }
         }
-        // reverse the flag indicator after each level
-        flag = !flag;
         if (li.size())
             traverse.push_back(li);
     }
@@ -90,9 +77,9 @@ int main()
     root->right->left = new Tree(2);
     root->right->right = new Tree(7);
 
-    vector<vector<int>> traverse = zigzagLevelOrder(root);
+    vector<vector<int>> traverse = LevelOrder(root);
 
-    // display the zig zag level order traversal
+    // display the Level Order traversal
     cout << "[ ";
     for (int i = 0; i < traverse.size(); i++)
     {
